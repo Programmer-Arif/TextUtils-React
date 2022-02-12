@@ -6,6 +6,7 @@ import TextForm from "./components/TextForm";
 import React, {useState} from 'react';
 import Alert from "./components/Alert";
 import {
+  HashRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
@@ -104,16 +105,18 @@ function App() {
     //   </nav>
     // </>
 
-
+  //d
     <>
       {/* <Navbar title="TextUtils" aboutText="About TextUtils"/> */}
       {/* <Navbar/> */}
+      <Router>
         <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode}/>
         <Alert alert={alert}/>
         <Routes>
             <Route exact path="/" element={<TextForm heading="Enter the text to analyse." mode={mode} showAlert={showAlert}/>} />
             <Route exact path="/about" element={<About/>} />
         </Routes>
+      </Router>
       {/* <TextForm heading="Enter the text to analyse." mode={mode} showAlert={showAlert}/> */}
       {/* <About/> */}
     </>
@@ -121,3 +124,6 @@ function App() {
 }
 
 export default App;
+
+
+//Great work
