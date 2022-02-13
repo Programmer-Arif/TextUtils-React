@@ -6,7 +6,7 @@ import TextForm from "./components/TextForm";
 import React, {useState} from 'react';
 import Alert from "./components/Alert";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
@@ -22,15 +22,15 @@ function App() {
   const toggleMode = ()=>{
     if(mode==='light'){
       setMode('dark');
-      document.body.style.backgroundColor = 'grey';
+      document.body.style.backgroundColor = '#022250';
       showAlert("success","Dark mode set Successifully")
-      document.title = "TextUtils - Dark Mode"
+      // document.title = "TextUtils - Dark Mode"
     }
     else{
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("success","Light mode set Successifully")
-      document.title = "TextUtils - Light Mode"
+      // document.title = "TextUtils - Light Mode"
     }
   }
 
@@ -84,7 +84,7 @@ function App() {
     //   <nav className="navbar navbar-expand-lg navbar-light bg-light">
     //     <div className="container-fluid">
     //       <a className="navbar-brand" href="/">TextUtils</a>
-    //       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="/navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    //       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     //         <span className="navbar-toggler-icon"></span>
     //       </button>
     //       <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -105,7 +105,7 @@ function App() {
     //   </nav>
     // </>
 
-  //d
+
     <>
       {/* <Navbar title="TextUtils" aboutText="About TextUtils"/> */}
       {/* <Navbar/> */}
@@ -114,16 +114,14 @@ function App() {
         <Alert alert={alert}/>
         <Routes>
             <Route exact path="/" element={<TextForm heading="Enter the text to analyse." mode={mode} showAlert={showAlert}/>} />
-            <Route exact path="/about" element={<About/>} />
+            <Route exact path="/about" element={<About mode={mode}/>} />
         </Routes>
       </Router>
       {/* <TextForm heading="Enter the text to analyse." mode={mode} showAlert={showAlert}/> */}
       {/* <About/> */}
     </>
+
   );
 }
 
 export default App;
-
-
-//Great work
