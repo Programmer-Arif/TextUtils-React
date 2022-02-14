@@ -4,20 +4,33 @@ import { Link } from 'react-router-dom';
 
 
 export default function Navbar(props) {
+
+    const highlight = (event)=>{
+        let home=document.getElementById('home');
+        let about=document.getElementById('about');
+        // console.log(event.target);
+        // event.target.classList.add('active');
+        if(event.target.id==='home'){
+            home.classList.add('active')
+            about.classList.remove('active')
+        }
+        else if(event.target.id==='about'){
+            about.classList.add('active')
+            home.classList.remove('active')
+        }
+    }
+
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
         <div className="container-fluid">
-        <Link className="navbar-brand" to="/">{props.title}</Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-        </button>
+        <div className="navbar-brand">{props.title}</div>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                <Link id="home" className="nav-link" onClick={highlight} aria-current="page" to="/">Home</Link>
             </li>
             <li className="nav-item">
-                <Link className="nav-link" to="/about">{props.aboutText}</Link>
+                <Link id="about" className="nav-link" onClick={highlight} to="/about">{props.aboutText}</Link>
             </li>
             </ul>
             {/* <form className="d-flex">
